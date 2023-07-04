@@ -1,0 +1,10 @@
+clear;clc; format compact;
+A = input('Please input the file name: ', 's');
+celcius = load(A);
+[fah] = temp(celcius); 
+fid = fopen('TempOutputs.txt', 'a');
+fprintf(fid, 'C\n');
+fprintf(fid, '\n%7.2f', celcius);
+fprintf(fid, 'F\n');
+fprintf(fid, '\n%7.2f', fah);
+fclose(fid);

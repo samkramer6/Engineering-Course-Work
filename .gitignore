@@ -22,3 +22,42 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Class Folders
+
+ME 5034 -- Bio-Inspired Technology/
+ME 4124 -- CFD-Thermo/
+
+ME 3024 -- Econ and Design/
+ME 3304 -- Heat And Mass/
+ME 3034 -- Discourse/
+ME 3414 -- Fluids/
+
+ISE 2214 -- Manufacturing Processes/
+STAT 3704 -- Statistics/
+ENGE 1215 -- Engineering 1/
+ECE 2054 -- Electrical Theory/
+CS 1014 -- Intro to Java/
+
+ENGE 1216 -- Solidworks/
+ME 2004 -- Numerical Analysis\Final Exam Work/
+ME 2004 -- Numerical Analysis\Debugging Extra Credit/
+ME 2004 -- Numerical Analysis\Cantilever Beam Study/
+ME 2004 -- Numerical Analysis\Homework 1/
+ME 2004 -- Numerical Analysis\Homework 2/
+ME 2004 -- Numerical Analysis\Homework 3/
+ME 2004 -- Numerical Analysis\Homework 4/
+ME 2004 -- Numerical Analysis\Homework 5/
+ME 2004 -- Numerical Analysis\Homework 7/
+ME 2004 -- Numerical Analysis\Homework 8/
+ME 2004 -- Numerical Analysis\Homework 9/
+ME 2004 -- Numerical Analysis\Midterm/
+ME 2004 -- Numerical Analysis\Supplemental Question 1/
+ME 2004 -- Numerical Analysis\Workshops/
+
+
+# Individual Files
+ME 3524 -- Vibrations\Assignment 2\Assignment 2
+ME 3524 -- Vibrations\Assignment 1\Homework #1
+
+
