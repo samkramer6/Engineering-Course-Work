@@ -19,6 +19,13 @@
 *.tar.gz
 *.rar
 
+# Other files
+*.pdf
+*.sldprt
+*.xlsx
+*.csv
+*.doc
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
@@ -40,22 +47,23 @@ ENGE 1216 -- Engineering 2/
 ECE 2054 -- Electrical Theory/
 CS 1014 -- Intro to Java/
 
-ENGE 1216 -- Solidworks/
-ME 2004 -- Numerical Analysis\Final Exam Work/
-ME 2004 -- Numerical Analysis\Debugging Extra Credit/
-ME 2004 -- Numerical Analysis\Cantilever Beam Study/
-ME 2004 -- Numerical Analysis\Homework 1/
-ME 2004 -- Numerical Analysis\Homework 2/
-ME 2004 -- Numerical Analysis\Homework 3/
-ME 2004 -- Numerical Analysis\Homework 4/
-ME 2004 -- Numerical Analysis\Homework 5/
-ME 2004 -- Numerical Analysis\Homework 7/
-ME 2004 -- Numerical Analysis\Homework 8/
-ME 2004 -- Numerical Analysis\Homework 9/
-ME 2004 -- Numerical Analysis\Midterm/
-ME 2004 -- Numerical Analysis\Supplemental Question 1/
-ME 2004 -- Numerical Analysis\Workshops/
+# ME 2004 folders
+Final Exam Work/
+Debugging Extra Credit/
+Cantilever Beam Study/
+Homework 1/
+Homework 2/
+Homework 3/
+Homework 4/
+Homework 5/
+Homework 7/
+Homework 8/
+Homework 9/
+Midterm/
+Supplemental Question 1/
+Workshops/
 
+# 
 
 # Individual Files
 ME 3524 -- Vibrations\Assignment 2\Assignment 2
