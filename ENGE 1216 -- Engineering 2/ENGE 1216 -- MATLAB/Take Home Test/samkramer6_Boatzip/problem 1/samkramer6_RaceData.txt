@@ -1,2 +1,0 @@
-Over the course of the race the average speed was 1.154 m/s, and the total distance traveled was 3.655 km, the maximum instantaneous 
-speed was 102.236 m/s, and the minimum instantaneous speed was 0.172 m/s, and the standard deviation was 6.633
