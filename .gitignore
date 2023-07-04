@@ -25,6 +25,9 @@
 *.xlsx
 *.csv
 *.doc
+*.docx
+*.jpg
+
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
@@ -63,7 +66,9 @@ Midterm/
 Supplemental Question 1/
 Workshops/
 
-# 
+# Final Exam Folders
+ME 5714 -- Final
+ME 5714 -- Midterm
 
 # Individual Files
 ME 3524 -- Vibrations\Assignment 2\Assignment 2
