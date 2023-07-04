@@ -1,0 +1,217 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ME 4005 Lab 6 Prelab</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-05-03"><meta name="DC.source" content="ME4005_Lab6_Prelab.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>ME 4005 Lab 6 Prelab</h1><p>Sam Kramer                                                    16 Apr 2022 This is the work and the plot data for the two different calibration plots for Lab 6 Prelab Will return:               1. 1 graph with the 2 calibration curves for both the               pressure gauge equation and the voltage divider equation as               well as selected points at Pmeasured = -2,-1,0,1,2 inches               H20</p><p>The experimental setup looks like:                                                __________________                     _________               |       MSP432       |        __________|           <tt>____________</tt>__o SV Termial      |       |            |  Pressure |       _____|___[] Channel 1     |       |            |   Gauge   |      | |     |   [] Channel 2     |       |          |___________|      | |     |   [] Channel 3     |       |         |                     | |     |   [] Channel 4     |       |        Vin                    | |     | o ground           |       |         <tt>_____              | |     |_</tt>__________________|       |                 |             | |       |       |                 R1            | |       |       |                 <tt>___Vout____</tt> |       |       |                 R2              |       |       |                 <tt>_____________</tt>       |       |                                         |       <tt>_______________________________________</tt></p><pre class="codeinput"><span class="comment">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Work %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+
+<span class="comment">% -- Set up</span>
+clear; clc; format <span class="string">compact</span>; close <span class="string">all</span>;
+
+<span class="comment">% -- Parameters</span>
+Vmax = 4.5;         <span class="comment">% Max voltage output from pressure gauge(Volts)</span>
+Vmin = 0.5;         <span class="comment">% Min voltage input from pressure gauge(Volts)</span>
+Pmax = 5;           <span class="comment">% Max pressure reading (in H2O)</span>
+Pmin = -5;          <span class="comment">% Min pressure reading (in H2O)</span>
+R1 = 1800;          <span class="comment">% Voltage divider resistance 1 (Ohms)</span>
+R2 = 1200;          <span class="comment">% Voltage divider resistance 2 (Ohms)</span>
+P = -5:1:5;         <span class="comment">% Pressure Vector (in H2O)</span>
+
+<span class="comment">% -- Pressure gauge equation Va</span>
+    <span class="comment">% This is the voltage generated from the pressure gauge reading the</span>
+    <span class="comment">% pressure differential in the pitot tube</span>
+    <span class="comment">% Follows equation:</span>
+    <span class="comment">%   Vout = ((Vmax - Vmin)/(Pmax - Pmin))*(P - Pmin) + Vmin</span>
+Va = ((Vmax - Vmin)/(Pmax - Pmin))*(P - Pmin) + Vmin;
+
+<span class="comment">% -- Voltage divider equation Vb</span>
+    <span class="comment">% This will be the voltage output that will be input into the MSP432</span>
+    <span class="comment">% and then compiled in the data files.</span>
+    <span class="comment">% Follows equation:</span>
+    <span class="comment">%   Vout = (Vin * R2) / (R1 + R2)</span>
+Vb = (Va*R2)/(R1 + R2);
+
+<span class="comment">% -- Voltage calibration plots</span>
+plot(P,Va,<span class="string">'Linewidth'</span>,1.5)
+    hold <span class="string">on</span>
+plot(P,Vb,<span class="string">'Linewidth'</span>,1.5)
+    hold <span class="string">on</span>
+    grid <span class="string">on</span>
+    xlim([-5 5])
+    ylim([0 5])
+    xlabel(<span class="string">'Pressure (inches H_2O)'</span>)
+    ylabel(<span class="string">'Voltage Output (Volts)'</span>)
+    title(<span class="string">'Voltage Output of Two Devices vs. Measured Pressure'</span>)
+
+<span class="comment">% -- Voltge at specified positions</span>
+V = Vb(1,4:8);
+P2 = -2:2;
+plot(P2,V,<span class="string">'ko'</span>,<span class="string">'Linewidth'</span>,1.5)
+    hold <span class="string">on</span>
+    legend(<span class="string">'Pressure Gauge Voltage output (V_a)'</span>,<span class="string">'MSP Voltage input (V_b)'</span>,<span class="string">'Pressure at selected points'</span>)
+poly = polyfit(P,Vb,1);
+
+    <span class="comment">% In inches H2O</span>
+slope = poly(1);
+fprintf(<span class="string">'The value of the slope is %3.3f (V/In-H2O) \n'</span>,slope)
+
+    <span class="comment">% In Pascals</span>
+slope = slope / 249;
+fprintf(<span class="string">'The value of the slope is %3.5f V/Pa \n'</span>,slope)
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% ME 4005 Lab 6 Prelab
+% Sam Kramer                                                    16 Apr 2022
+% This is the work and the plot data for the two different calibration
+% plots for Lab 6 Prelab
+% Will return:
+%               1. 1 graph with the 2 calibration curves for both the
+%               pressure gauge equation and the voltage divider equation as
+%               well as selected points at Pmeasured = -2,-1,0,1,2 inches
+%               H20
+%
+% The experimental setup looks like:
+%                                                ____________________
+%                     ___________               |       MSP432       |
+%        ____________|           |______________|__o SV Termial      |
+%       |            |  Pressure |       _______|___[] Channel 1     |
+%       |            |   Gauge   |      | |     |   [] Channel 2     |
+%       |          __|___________|      | |     |   [] Channel 3     |
+%       |         |                     | |     |   [] Channel 4     |
+%       |        Vin                    | |     | o ground           |
+%       |         |_______              | |     |_|__________________|
+%       |                 |             | |       |
+%       |                 R1            | |       |
+%       |                 |_____Vout____| |       |
+%       |                 R2              |       |
+%       |                 |_______________|       |
+%       |                                         |
+%       |_________________________________________|
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Work %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% REPLACE_WITH_DASH_DASH Set up
+clear; clc; format compact; close all;
+
+% REPLACE_WITH_DASH_DASH Parameters
+Vmax = 4.5;         % Max voltage output from pressure gauge(Volts)
+Vmin = 0.5;         % Min voltage input from pressure gauge(Volts)
+Pmax = 5;           % Max pressure reading (in H2O)
+Pmin = -5;          % Min pressure reading (in H2O)
+R1 = 1800;          % Voltage divider resistance 1 (Ohms)
+R2 = 1200;          % Voltage divider resistance 2 (Ohms)
+P = -5:1:5;         % Pressure Vector (in H2O)
+
+% REPLACE_WITH_DASH_DASH Pressure gauge equation Va
+    % This is the voltage generated from the pressure gauge reading the
+    % pressure differential in the pitot tube
+    % Follows equation:
+    %   Vout = ((Vmax - Vmin)/(Pmax - Pmin))*(P - Pmin) + Vmin
+Va = ((Vmax - Vmin)/(Pmax - Pmin))*(P - Pmin) + Vmin;
+
+% REPLACE_WITH_DASH_DASH Voltage divider equation Vb
+    % This will be the voltage output that will be input into the MSP432
+    % and then compiled in the data files.
+    % Follows equation: 
+    %   Vout = (Vin * R2) / (R1 + R2)
+Vb = (Va*R2)/(R1 + R2);
+
+% REPLACE_WITH_DASH_DASH Voltage calibration plots
+plot(P,Va,'Linewidth',1.5)
+    hold on
+plot(P,Vb,'Linewidth',1.5)
+    hold on
+    grid on
+    xlim([-5 5])
+    ylim([0 5])
+    xlabel('Pressure (inches H_2O)')
+    ylabel('Voltage Output (Volts)')
+    title('Voltage Output of Two Devices vs. Measured Pressure')
+    
+% REPLACE_WITH_DASH_DASH Voltge at specified positions
+V = Vb(1,4:8);
+P2 = -2:2;
+plot(P2,V,'ko','Linewidth',1.5)
+    hold on
+    legend('Pressure Gauge Voltage output (V_a)','MSP Voltage input (V_b)','Pressure at selected points')
+poly = polyfit(P,Vb,1);
+    
+    % In inches H2O
+slope = poly(1);
+fprintf('The value of the slope is %3.3f (V/In-H2O) \n',slope)
+
+    % In Pascals
+slope = slope / 249;
+fprintf('The value of the slope is %3.5f V/Pa \n',slope)
+
+    
+    
+    
+    
+
+##### SOURCE END #####
+--></body></html>
