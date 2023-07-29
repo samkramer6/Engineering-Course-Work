@@ -31,7 +31,7 @@ function spectrogram_data(data,time_start,time_end)
 
 % --Finding Spectrogram
     figure()
-    [s,f,t] = spectrogram(data, hamming(128), 124, [], fs,'yaxis');
+    [s,f,t] = spectrogram(data, hamming(300), 290, [], fs,'yaxis');
         t = time_start:(1/length(t)):time_end;
         s = 20*log10(abs(s));
         s = s - max(s);

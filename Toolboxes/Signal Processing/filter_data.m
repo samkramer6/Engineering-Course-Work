@@ -21,33 +21,18 @@ function filtered_data = filter_data(test_data,Fs,filter_center,width,show_respo
 %
 
 % --Develop filter band
-    try % {IF FILTER BAND IS SUITABLE}
+    lower_filt = filter_center - width*filter_center;
+    upper_filt = filter_center + width*filter_center;
+    filter_band = [lower_filt upper_filt] ./ (Fs/2);
 
-        lower_filt = filter_center - width*filter_center;
-        upper_filt = filter_center + width*filter_center;
-        filter_band = [lower_filt upper_filt] ./ (Fs/2);
-
-    catch %{IF FILTER BAND IS UNSUITABLE}
-
-        width = .5;
-        filter_center = 80000;
-        lower_filt = filter_center - width*filter_center;
-        upper_filt = filter_center + width*filter_center;
-        filter_band = [lower_filt upper_filt] ./ (Fs/2);
-
-    end
-  
 % --Define filter used
     [B,A] = butter(9,filter_band,"bandpass");
 
 % --Frequency Response of filter
-    try
-        if show_response == "true"
-            figure()
-            freqz(B,A,[],Fs)
-                title('Frequency Response of Created Filter')
-        end
-    catch
+    if show_response == "true"
+        figure()
+        freqz(B,A,[],Fs)
+        title('Frequency Response of Created Filter')
     end
 
 % --Filter data and return
