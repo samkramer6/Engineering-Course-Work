@@ -1,51 +1,53 @@
-function specfilt_data(data,time_start,time_end)
+function specfilt_data(data_path,mic_num,time_start,time_end,filt_center)
 %
-%   This function will take the filtered spectrogram of a single data set
-%   that is plugged into the function. This has set filter settings that
-%   can be changed if you go into the code and change the settings. 
+%   This function will be used to find the spectrogram of the data once a
+%   test has been completed. This will filter out noise from the system and
+%   will be able to analyze tests properly to find chirp data. This has set
+%   filter settings that cannot be changed unless the code is adjusted. The
+%   center is adjustable but has a default of 80kHz, and has a width of 
+%   0.25. This will be in the linear scale due to the usefulness of the 
+%   linear spectrograms when filtered.
 %   
-%   Inputs:
-%           data    ==  Single row vector that contains the data you wish
-%                       to see the spectrogram and filter. If you have an
-%                       ensemble of row vectors, zero mean the data and
-%                       then mean across the rows using mean(x,2).
-%           time_start  ==  The time start of the data you would like to
-%                           visualize (s).
-%           time_end    ==  The time end of the data you would like to
-%                           visualize (s).
+%   Inputs:     
+%       data_path::AbsStr   ==  The path that points to the dataset
+%       mic_number::Int     ==  The microphone you would like to 
+%                               investigate the data from.
+%       time_start::Float   ==  The time window starting point.
+%       time_end::Float     ==  The time window ending point. Will default
+%                               to whole dataset if left out.
+%       filt_center::Int    ==  The filter center that you desire. Will
+%                               default to 80kHz.
 %
 %   Sam Kramer
-%   July 14th, 
+%   August 4th, 2023
 %   
-%   See also filter_data, spectrogram_data
+%   See also filter_data, spectrogram_data, and spectrogram_function
 %
 
-% --Find ind = 1
-    ind1 = find(data(1:end,1) == time_start);
-    ind2 = find(data(1:end,1) == time_end);
-    fs = 1/(data(4,1) - data(3,1));
+% --Load in data
+    [data,~,fs] = load_data(data_path);
 
-% --Pull in data
-    data = data(ind1:ind2,1);
+% --Select microphone of interest
+    mic_num = uint8(mic_num);           % Confirms int data type
+    try
+        data = data(:,mic_num);
+    catch
+        disp("Mic does not exist in dataset")
+    end
 
-    data = data - mean(data);
-
-% --Filter data [CHANGE IF NEEDED]
-    filtered_data = filter_data(data,fs,80000,0.25,"False");
+% --Filter data
+    try
+        try 
+            filtered_data = filter_data(data,fs,filt_center,0.25,"False");
+        catch
+            filtered_data = filter_data(data,fs,80000,0.5,"False");
+        end
+    catch
+        fprintf("Issue Filtering Data \n");
+        filtered_data = data;
+    end
 
 % --Finding Spectrogram
-    figure()
-    [s,f,t] = spectrogram(filtered_data, hamming(128), 124, [], fs,'yaxis');
-        t = time_start:(1/length(t)):time_end;
-        s = 20*log10(abs(s));
-        s = s - max(s);
-        imagesc(t,f,s)
-        set(gca,"YDir","normal")
-        clb = colorbar;
-        clim([-60 0])
-        title('Spectrogram of Data')
-        xlabel('Time (s)');
-        ylabel('Frequency (Hz)')
-        clb.Title.String = "Power (dB)";
-
+    spectrogram_function(filtered_data,fs,time_start,time_end)
+    
 end

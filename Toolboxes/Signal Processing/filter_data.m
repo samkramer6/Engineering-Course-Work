@@ -7,7 +7,7 @@ function filtered_data = filter_data(test_data,Fs,filter_center,width,show_respo
 %   100kHz.
 %   
 %
-%   Inputs: test_data   --  The raw test data for one column vector
+%   Inputs: test_data   --  The raw test data for one mic
 %           Fs  --  The sample frequency of the data.
 %           filter_center   --  the center of the passband (NOT REQUIRED, 
 %                               WILL DEFAULT TO 80kHz)
@@ -21,18 +21,33 @@ function filtered_data = filter_data(test_data,Fs,filter_center,width,show_respo
 %
 
 % --Develop filter band
-    lower_filt = filter_center - width*filter_center;
-    upper_filt = filter_center + width*filter_center;
-    filter_band = [lower_filt upper_filt] ./ (Fs/2);
+    try % {IF FILTER BAND IS SUITABLE}
 
+        lower_filt = filter_center - width*filter_center;
+        upper_filt = filter_center + width*filter_center;
+        filter_band = [lower_filt upper_filt] ./ (Fs/2);
+
+    catch %{IF FILTER BAND IS UNSUITABLE}
+
+        width = .5;
+        filter_center = 80000;
+        lower_filt = filter_center - width*filter_center;
+        upper_filt = filter_center + width*filter_center;
+        filter_band = [lower_filt upper_filt] ./ (Fs/2);
+
+    end
+  
 % --Define filter used
     [B,A] = butter(9,filter_band,"bandpass");
 
 % --Frequency Response of filter
-    if show_response == "true"
-        figure()
-        freqz(B,A,[],Fs)
-        title('Frequency Response of Created Filter')
+    try
+        if show_response == "true" || show_response == "True"
+            figure()
+            freqz(B,A,[],Fs)
+                title('Frequency Response of Created Filter')
+        end
+    catch
     end
 
 % --Filter data and return
